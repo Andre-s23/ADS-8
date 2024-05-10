@@ -52,26 +52,24 @@ int Train::getLength() {
             }
         }
     } else {
-        while (true) {
-            schet1 = 0;
+        do {
             q = q->next;
             schet1++;
-            while (q->light == false) {
-                schet1++;
-                q = q->next;
+            glav++;
+            if (q->light) {
+                q->light = false;
+                for (int j = schet1; j > 0; j--) {
+                    q = q->prev;
+                    glav++;
+                }
+                if (!q->light) {
+                    countOp = glav;
+                    return schet1;
+                } else {
+                    schet1 = 0;
+                }
             }
-            q->light = false;
-            schet2 = schet1;
-            while (schet2--) {
-                q = q->prev;
-            }
-            if (!q->light) {
-                glav += schet1;
-                countOp = glav * 2;
-                return schet1;
-            }
-            glav += schet1;
-        }
+        } while (true);
     }
 }
 
