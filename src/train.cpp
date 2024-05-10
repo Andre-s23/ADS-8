@@ -12,8 +12,7 @@ void Train::addCage(bool lamp) {
         first->light = lamp;
         first->prev = first;
         first->next = first;
-    }
-    else {
+    } else {
         Cage* temp = new Cage;
         temp->prev = first->prev;
         temp->next = first;
@@ -52,8 +51,7 @@ int Train::getLength() {
                 }
             }
         }
-    }
-    else {
+    } else {
         while (true) {
             schet1 = 0;
             q = q->next;
